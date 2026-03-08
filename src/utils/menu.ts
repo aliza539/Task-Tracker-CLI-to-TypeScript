@@ -1,7 +1,7 @@
 export function showMenu(): void {
 
   console.log(`
-Task Tracker CLI
+
 
 Commands:
 
