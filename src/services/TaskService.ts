@@ -21,7 +21,7 @@ export function addTask(
 
   tasks.push(newTask);
   saveTasks(tasks);
-  console.log(chalk.green("✓ Task added!"));
+  console.log(chalk.green("Task added!"));
 }
 
 export function listTasks(): void {
@@ -32,7 +32,7 @@ export function listTasks(): void {
     return;
   }
 
-  console.log(chalk.blue("\n=== Tasks ===\n"));
+  console.log(chalk.blue("\n Tasks \n"));
   tasks.forEach((task) => {
     const statusIcon = task.status === "done" ? "✓" : "○";
     const statusColor = task.status === "done" ? chalk.green : chalk.yellow;
@@ -56,13 +56,13 @@ export function deleteTask(id: number): void {
   const index = tasks.findIndex((task) => task.id === id);
 
   if (index === -1) {
-    console.log(chalk.red("✗ Task not found"));
+    console.log(chalk.red("Task not found"));
     return;
   }
 
   tasks.splice(index, 1);
   saveTasks(tasks);
-  console.log(chalk.green("✓ Task deleted!"));
+  console.log(chalk.green("Task deleted!"));
 }
 
 export function updateTask(id: number, newDescription: string): void {
@@ -70,14 +70,14 @@ export function updateTask(id: number, newDescription: string): void {
   const task = tasks.find((t) => t.id === id);
 
   if (!task) {
-    console.log(chalk.red("✗ Task not found"));
+    console.log(chalk.red("Task not found"));
     return;
   }
 
   task.description = newDescription;
   task.updatedAt = new Date();
   saveTasks(tasks);
-  console.log(chalk.green("✓ Task updated!"));
+  console.log(chalk.green("Task updated!"));
 }
 
 export function markTaskDone(id: number): void {
@@ -85,14 +85,14 @@ export function markTaskDone(id: number): void {
   const task = tasks.find((t) => t.id === id);
 
   if (!task) {
-    console.log(chalk.red("✗ Task not found"));
+    console.log(chalk.red("Task not found"));
     return;
   }
 
   task.status = task.status === "done" ? "to-do" : "done";
   task.updatedAt = new Date();
   saveTasks(tasks);
-  console.log(chalk.green(`✓ Task marked as ${task.status}!`));
+  console.log(chalk.green(`Task marked as ${task.status}!`));
 }
 
 export function sortTasks(
@@ -123,9 +123,9 @@ export function sortTasks(
     return;
   }
 
-  console.log(chalk.blue(`\n=== Tasks (sorted by ${key} - ${order}) ===\n`));
+  console.log(chalk.blue(`\n Tasks (sorted by ${key} - ${order}) \n`));
   sorted.forEach((task) => {
-    const statusIcon = task.status === "done" ? "✓" : "○";
+    const statusIcon = task.status === "done" ? "done" : "to-do";
     const priorityColor = 
       task.priority === "high" ? chalk.red :
       task.priority === "medium" ? chalk.yellow :
@@ -150,7 +150,7 @@ export function searchByPriority(priority: string): void {
     return;
   }
 
-  console.log(chalk.blue(`\n=== Tasks with priority: ${priority} ===\n`));
+  console.log(chalk.blue(`\n Tasks with priority: ${priority} \n`));
   result.forEach((task) => {
     const statusIcon = task.status === "done" ? "✓" : "○";
     console.log(
@@ -172,7 +172,7 @@ export function getStats(): void {
   const toDo = tasks.filter((t) => t.status === "to-do").length;
   const highPriority = tasks.filter((t) => t.priority === "high").length;
 
-  console.log(chalk.blue("\n=== Task Statistics ===\n"));
+  console.log(chalk.blue("\n Task Statistics \n"));
   console.log(`Total Tasks: ${chalk.cyan(tasks.length)}`);
   console.log(`Done: ${chalk.green(done)}`);
   console.log(`To-Do: ${chalk.yellow(toDo)}`);
