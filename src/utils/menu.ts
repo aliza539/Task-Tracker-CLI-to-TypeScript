@@ -11,10 +11,9 @@ delete <id>
 mark <id> done
 list
 search priority <value>
-search date <YYYY-MM-DD>
 sort priority [asc|desc]
-sort date [asc|desc]
 stats
+status
 help
 `);
 }

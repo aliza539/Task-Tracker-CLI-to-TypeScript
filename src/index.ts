@@ -98,6 +98,10 @@ switch (command) {
     getStats();
     break;
 
+  case "status":
+    getStats();
+    break;
+
   case "help":
     showMenu();
     break;
